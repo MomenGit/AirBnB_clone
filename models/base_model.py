@@ -4,15 +4,19 @@ from datetime import datetime
 import uuid
 
 class BaseModel:
+    """
+    A class BaseModel that defines all common attributes/methods for other classes
+    """
 
     def __init__(self, *args, **kwargs):
         """ initaizing BaseModel instance """
         if kwargs:
-             for key, value in kwarg.items():
+            for key, value in kwarg.items():
                 if key == "__class__":
                     continue
                 if (key == "created_at") or (key == "updated_at"):
-                    kwarg[key] = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    kwarg[key] = datetime.strptime(value, 
+                                                   "%Y-%m-%dT%H:%M:%S.%f")
                 self.__dict__[key] = value
         else:
             self.id = str(uuyid.uuid4())
@@ -21,8 +25,8 @@ class BaseModel:
 
     def __str__(self):
         """
-        String representation or the instance 
-        should print: 
+        String representation or the instance
+        should print:
         [<class name>] (<self.id>) <self.__dict__>
         """
         str = "[{}] ({}) {}".format(self.__class__.__name__,
