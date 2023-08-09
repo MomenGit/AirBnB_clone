@@ -18,3 +18,14 @@ class BaseModel:
             self.id = str(uuyid.uuid4())
             self.crated_at = datetime.now()
             self.updated_at = datetime.now()
+
+    def __str__(self):
+        """
+        String representation or the instance 
+        should print: 
+        [<class name>] (<self.id>) <self.__dict__>
+        """
+        str = "[{}] ({}) {}".format(self.__class__.__name__,
+                                    self.id,
+                                    self.__dict__)
+        return (str)
