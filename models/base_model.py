@@ -29,3 +29,10 @@ class BaseModel:
                                     self.id,
                                     self.__dict__)
         return (str)
+
+    def save(self):
+        """
+         updates the public instance attribute
+         updated_at: with the current datetime
+         """
+        self.updated_at = datetime.now()
