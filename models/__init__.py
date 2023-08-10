@@ -13,18 +13,18 @@ def dispatch_dict():
     """
 
     from .base_model import BaseModel
-    # from models.user import User
-    # from models.city import City
-    # from models.state import State
+    from models.user import User
+    from models.city import City
+    from models.state import State
     from .amenity import Amenity
     from .place import Place
     from .review import Review
 
     return {
         "BaseModel": BaseModel,
-        # "User": User,
-        # "City": City,
-        # "State": State,
+        "User": User,
+        "City": City,
+        "State": State,
         "Amenity": Amenity,
         "Place": Place,
         "Review": Review,
