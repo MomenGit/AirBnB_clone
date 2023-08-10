@@ -1,8 +1,11 @@
 #!/usr/bin/python3
-""""""
-from base_model import BaseModel
+"""Defines the Amenity Module"""
+from models.base_model import BaseModel
 
 
 class Amenity(BaseModel):
-    """"""
-    pass
+    """A class represents an Amenity Object"""
+    name = ""
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
