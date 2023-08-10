@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import cmd
-from typing import Any
+import models
 """Module that contains AirBnB command interpreter"""
 
 
@@ -11,7 +11,7 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = '(hbnb) '
 
-    def cmdloop(self, intro: Any | None = None) -> None:
+    def cmdloop(self, intro=None) -> None:
         import sys
         if len(sys.argv) > 1:
             self.onecmd(' '.join(sys.argv[1:]))
@@ -28,6 +28,58 @@ class HBNBCommand(cmd.Cmd):
         """
         print()
         return True
+
+    def do_create(self, obj_type):
+        """Creates a new instance of the obj_type"""
+
+        if not obj_type:
+            print("** class name missing **")
+        elif obj_type not in map(lambda val: val.__name__,
+                                 models.dispatch_dict().values()):
+            print("** class doesn't exist **")
+        else:
+            models.dispatch_dict()[obj_type]().save()
+
+    def do_show(self, arg):
+        """Prints the string representation of an instance
+        based on the class name and id
+        """
+
+        args = arg.split()
+        if len(args) == 0:
+            print("** class name missing **")
+            return
+        elif args[0] not in map(lambda val: val.__name__,
+                                models.dispatch_dict().values()):
+            print("** class doesn't exist **")
+        elif len(args) < 2:
+            print("** instance id missing **")
+        else:
+            obj = models.storage.all().get("{}.{}".format(args[0], args[1]))
+            if obj:
+                print(obj)
+            else:
+                print("** no instance found **")
+
+    def do_destroy(self, arg):
+        """Deletes an instance based on the class name and id"""
+
+        args = arg.split()
+        if len(args) == 0:
+            print("** class name missing **")
+        elif args[0] not in map(lambda val: val.__name__,
+                                models.dispatch_dict().values()):
+            print("** class doesn't exist **")
+        elif len(args) < 2:
+            print("** instance id missing **")
+        else:
+            key = "{}.{}".format(args[0], args[1])
+            obj = models.storage.all().get(key)
+            if obj:
+                models.storage.all().pop(key)
+                models.storage.save()
+            else:
+                print("** no instance found **")
 
     def emptyline(self):
         pass
