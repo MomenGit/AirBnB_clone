@@ -1,17 +1,6 @@
 #!/usr/bin/python3
 """File Storage Module"""
-from models import *
 import json
-
-dispatch_dict = {
-    "BaseModel": base_model.BaseModel,
-    "Amenity": amenity.Amenity,
-    "City": city.City,
-    "Place": place.Place,
-    "Review": review.Review,
-    "State": state.State,
-    "User": user.User,
-}
 
 
 class FileStorage:
@@ -45,6 +34,23 @@ class FileStorage:
         (only if the JSON file (__file_path) exists; otherwise, do nothing.
         If the file doesn't exist, no exception should be raised)
         """
+        from models.base_model import BaseModel
+        # from models.user import User
+        # from models.city import City
+        # from models.state import State
+        from models.amenity import Amenity
+        from models.place import Place
+        from models.review import Review
+
+        dispatch_dict = {
+            "BaseModel": BaseModel,
+            # "User": User,
+            # "City": City,
+            # "State": State,
+            "Amenity": Amenity,
+            "Place": Place,
+            "Review": Review,
+        }
         try:
             with open(self.__file_path) as file:
                 self.__objects = json.load(file)
