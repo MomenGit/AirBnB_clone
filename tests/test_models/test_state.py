@@ -47,7 +47,7 @@ class TestStateModule(unittest.TestCase):
         updated_before = self.test_model.updated_at
         self.test_model.save()
         self.assertNotEqual(updated_before,
-                           self.test_model.updated_at)
+                            self.test_model.updated_at)
 
 
 if __name__ == "__main__":
