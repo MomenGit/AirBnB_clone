@@ -10,7 +10,7 @@ from models.user import User
 class TestUserModule(unittest.TestCase):
     """Unit test for User class"""
 
-    def SetUp(self):
+    def setUp(self):
         self.test_model = User()
 
     def tearDown(self):
