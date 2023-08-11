@@ -27,7 +27,7 @@ class TestUserModule(unittest.TestCase):
                          datetime)
 
     def test_name_is_str(self):
-        self.asserEqual(type(self.test_model.name),
+        self.assertEqual(type(self.test_model.name),
                         str)
 
     def test_email_(self):
@@ -35,7 +35,7 @@ class TestUserModule(unittest.TestCase):
                          str)
 
     def test_password_(self):
-        sefl.assertEqual(type(self.test_model.password),
+        self.assertEqual(type(self.test_model.password),
                          str)
 
     def test_first_name_(self):
