@@ -45,6 +45,22 @@ class TestUserModule(unittest.TestCase):
     def test_obj_in_storage(self):
         self.assertIn(self.test_model, storage.all().values())
 
+    def test_two_obj_diff_id(self):
+        """
+        Check if two objects have diffrent ids
+        """
+        obj1 = User()
+        obj2 = User()
+        self.assertNotEqual(obj1.id, obj2.id)
+        del obj1
+        del obj2
+
+    def test_save(self):
+        updated_before = self.test_model.updated_at
+        self.test_model.save()
+        self.assertNotEqual(updated_before,
+                           self.test_model.updated_at)
+
 
 if __name__ == "__main__":
     unittest.main()
