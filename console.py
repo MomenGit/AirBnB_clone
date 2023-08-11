@@ -135,19 +135,25 @@ class HBNBCommand(cmd.Cmd):
         else:
             class_name = args[0]
             obj_id = args[1]
-            attr_name = args[2]
-            attr_value = args[3]
             if (class_name not in models.dispatch_dict().keys()):
                 print("** class doesn't exist **")
             obj = models.storage.all().get("{}.{}"
                                            .format(class_name, obj_id))
+            attr_name = args[2]
+            attr_value = args[3]
+
             if obj:
-                if (hasattr(obj, attr_name)):
-                    attr_type = type(getattr(obj, attr_name))
-                    obj.__dict__[attr_name] = attr_type(attr_value)
-                else:
-                    obj.__dict__[attr_name] = attr_value
-                models.storage.save()
+                i = 2
+                while (i + 1 < len(args)):
+                    attr_name = args[i]
+                    attr_value = args[i + 1]
+                    if (hasattr(obj, attr_name)):
+                        attr_type = type(getattr(obj, attr_name))
+                        obj.__dict__[attr_name] = attr_type(attr_value)
+                    else:
+                        obj.__dict__[attr_name] = attr_value
+                    models.storage.save()
+                    i += 2
             else:
                 print("** no instance found **")
 
