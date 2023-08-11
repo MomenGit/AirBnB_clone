@@ -150,6 +150,16 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** no instance found **")
 
+    def do_count(self, arg):
+        """
+        Retrieve the number of instances of a class
+        """
+        obj_count = 0
+        for obj in models.storage.all().values():
+            if (arg == obj.__class__.__name__):
+                obj_count += 1
+        print(obj_count)
+
     def emptyline(self):
         pass
 
