@@ -86,18 +86,11 @@ class HBNBCommand(cmd.Cmd):
         Prints all string representation of
         all instances based or not on the class name.
         """
-        classes = {"BaseModel" : BaseModel,
-                  "User" : User,
-                  "State": State,
-                  "City": City,
-                  "Amenity": Amenity,
-                  "Place": Place,
-                  "Review": Review}
         if not arg:
             print(storage.all())
             print([str(value) for value in storage.all().values()])
         else:
-            if arg not in classes.keys():
+            if arg not in models.dispatch_dict().keys():
                 print("** class doesn't exist **")
             else:
                 print ([str(obj) for obj in storage.all().values()
