@@ -81,6 +81,28 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** no instance found **")
 
+    def do_all(self, arg):
+        """
+        Prints all string representation of
+        all instances based or not on the class name.
+        """
+        classes = {"BaseModel" : BaseModel,
+                  "User" : User,
+                  "State": State,
+                  "City": City,
+                  "Amenity": Amenity,
+                  "Place": Place,
+                  "Review": Review}
+        if not arg:
+            print(storage.all())
+            print([str(value) for value in storage.all().values()])
+        else:
+            if arg not in classes.keys():
+                print("** class doesn't exist **")
+            else:
+                print ([str(obj) for obj in storage.all().values()
+                       if obj.__class__.__name__ == arg])
+
     def emptyline(self):
         pass
 
