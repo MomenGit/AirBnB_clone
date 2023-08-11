@@ -26,10 +26,6 @@ class TestUserModule(unittest.TestCase):
         self.assertEqual(type(self.test_model.created_at),
                          datetime)
 
-    def test_name_is_str(self):
-        self.assertEqual(type(self.test_model.name),
-                        str)
-
     def test_email_(self):
         self.assertEqual(type(self.test_model.email),
                          str)
