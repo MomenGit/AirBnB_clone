@@ -11,6 +11,24 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = '(hbnb) '
 
+    def precmd(self, line: str) -> str:
+        import re
+        pattern = r"(\w+)\.(\w+)\((.*)\)"
+        # match line to <class name>.<cmd>(<args>)
+        match = re.match(pattern, line)
+
+        if match:
+            # converts matched into a list
+            groups = list(match.groups())
+            # find the parameters
+            parameters = re.findall(r"\b\w+\b", groups[2])
+            # creates a new list by adding
+            # the cmd then the class name then the parameters
+            groups = [groups[1], groups[0]] + parameters
+            return ' '.join(groups)
+        else:
+            return super().precmd(line)
+
     def cmdloop(self, intro=None) -> None:
         import sys
         if len(sys.argv) > 1:
