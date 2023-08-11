@@ -21,7 +21,8 @@ class HBNBCommand(cmd.Cmd):
             # converts matched into a list
             groups = list(match.groups())
             # find the parameters
-            parameters = re.findall(r"\b\w+\b", groups[2])
+            # parameters = re.findall(r"\b\w+\b", groups[2])
+            parameters = re.findall(r"\b\w+[-?\w+]*\b", groups[2])
             # creates a new list by adding
             # the cmd then the class name then the parameters
             groups = [groups[1], groups[0]] + parameters
