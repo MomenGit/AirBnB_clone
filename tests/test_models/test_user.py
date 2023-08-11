@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Test module for user"""
 
-import uinttest
+import unittest
 from models import storage
 from datetime import datetime
 from models.user import User
