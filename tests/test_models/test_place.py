@@ -72,7 +72,7 @@ class TestPlaceModule(unittest.TestCase):
 
     def test_amenity_ids_float(self):
         self.assertEqual(type(self.test_model.amenity_ids),
-                         list)   
+                         list)
 
     def test_obj_in_storage(self):
         self.assertIn(self.test_model, storage.all().values())
