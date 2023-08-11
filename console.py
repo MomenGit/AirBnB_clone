@@ -87,13 +87,13 @@ class HBNBCommand(cmd.Cmd):
         all instances based or not on the class name.
         """
         if not arg:
-            print(storage.all())
-            print([str(value) for value in storage.all().values()])
+#            print(models.storage.all())
+            print([str(value) for value in models.storage.all().values()])
         else:
             if arg not in models.dispatch_dict().keys():
                 print("** class doesn't exist **")
             else:
-                print ([str(obj) for obj in storage.all().values()
+                print ([str(obj) for obj in models.storage.all().values()
                        if obj.__class__.__name__ == arg])
 
     def emptyline(self):
