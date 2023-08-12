@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""""""
+"""Console Unit Test Module"""
 from io import StringIO
 import unittest
 from unittest.mock import patch
