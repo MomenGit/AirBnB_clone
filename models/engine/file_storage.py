@@ -4,7 +4,8 @@ import json
 
 
 class FileStorage:
-    """A class that serializes instances to a JSON file
+    """
+    A class that serializes instances to a JSON file
     and deserializes JSON file to instances
     """
 
@@ -17,9 +18,9 @@ class FileStorage:
 
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
-        if getattr(obj, "id", False):
-            self.__objects["{}.{}".format(
-                obj.__class__.__name__, obj.id)] = obj
+        if obj.id in self.__objects:
+            return
+        self.__objects["{}.{}".format(obj.__class__.__name__, obj.id)] = obj
 
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
@@ -30,7 +31,8 @@ class FileStorage:
             json.dump(objects, file)
 
     def reload(self):
-        """deserializes the JSON file to __objects
+        """
+        deserializes the JSON file to __objects
         (only if the JSON file (__file_path) exists; otherwise, do nothing.
         If the file doesn't exist, no exception should be raised)
         """
