@@ -296,7 +296,7 @@ class TestConsole(unittest.TestCase):
                 output = file.getvalue().strip()
                 self.assertIn(model_id, output)
 
-    def test_update(self):
+    def test_update_base_model(self):
         """Test update command"""
         with patch('sys.stdout', new=StringIO()) as file:
             self.console.onecmd("create BaseModel")
