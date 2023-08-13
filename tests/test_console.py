@@ -86,13 +86,73 @@ class TestConsole(unittest.TestCase):
             self.assertRegex(
                 output, r'\b\w+[-?\w+]*\b')
 
-    def test_show(self):
+    def test_show_base_model(self):
         """Test show command"""
         with patch('sys.stdout', new=StringIO()) as file:
             self.console.onecmd("create BaseModel")
             model_id = file.getvalue().strip()
             with patch('sys.stdout', new=StringIO()) as file:
                 self.console.onecmd("show BaseModel {}".format(model_id))
+                output = file.getvalue().strip()
+                self.assertIn(model_id, output)
+
+    def test_show_user(self):
+        """Test show command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create User")
+            model_id = file.getvalue().strip()
+            with patch('sys.stdout', new=StringIO()) as file:
+                self.console.onecmd("show User {}".format(model_id))
+                output = file.getvalue().strip()
+                self.assertIn(model_id, output)
+
+    def test_show_place(self):
+        """Test show command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create Place")
+            model_id = file.getvalue().strip()
+            with patch('sys.stdout', new=StringIO()) as file:
+                self.console.onecmd("show Place {}".format(model_id))
+                output = file.getvalue().strip()
+                self.assertIn(model_id, output)
+
+    def test_show_city(self):
+        """Test show command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create City")
+            model_id = file.getvalue().strip()
+            with patch('sys.stdout', new=StringIO()) as file:
+                self.console.onecmd("show City {}".format(model_id))
+                output = file.getvalue().strip()
+                self.assertIn(model_id, output)
+
+    def test_show_amenity(self):
+        """Test show command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create Amenity")
+            model_id = file.getvalue().strip()
+            with patch('sys.stdout', new=StringIO()) as file:
+                self.console.onecmd("show Amenity {}".format(model_id))
+                output = file.getvalue().strip()
+                self.assertIn(model_id, output)
+
+    def test_show_state(self):
+        """Test show command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create State")
+            model_id = file.getvalue().strip()
+            with patch('sys.stdout', new=StringIO()) as file:
+                self.console.onecmd("show State {}".format(model_id))
+                output = file.getvalue().strip()
+                self.assertIn(model_id, output)
+
+    def test_show_review(self):
+        """Test show command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create Review")
+            model_id = file.getvalue().strip()
+            with patch('sys.stdout', new=StringIO()) as file:
+                self.console.onecmd("show Review {}".format(model_id))
                 output = file.getvalue().strip()
                 self.assertIn(model_id, output)
 
