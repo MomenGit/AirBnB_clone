@@ -40,11 +40,11 @@ class Test_BaseModel(unittest.TestCase):
         """Check updated at type"""
         self.assertEqual(type(self.test_model.updated_at), datetime.datetime)
 
-#    def test_change_updated_at(self):
-#        """Check if updated_at changed when using .save()"""
-#        self.test_model.save()
-#        self.assertTrue(self.test_model.created_at <
-#                        self.test_model.updated_at)
+    def test_change_updated_at(self):
+        """Check if updated_at changed when using .save()"""
+        self.test_model.save()
+        self.assertTrue(self.test_model.created_at <
+                        self.test_model.updated_at)
 
     def test__str__(self):
         """Check if __str___ gives the correct format"""

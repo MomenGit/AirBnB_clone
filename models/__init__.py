@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Models Module"""
+"""__init__.py Models Module defination"""
 __all__ = ["base_model", "amenity", "city", "place", "review", "state", "user"]
 from models.engine.file_storage import FileStorage
 
