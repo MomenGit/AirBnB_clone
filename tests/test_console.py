@@ -156,13 +156,73 @@ class TestConsole(unittest.TestCase):
                 output = file.getvalue().strip()
                 self.assertIn(model_id, output)
 
-    def test_destroy(self):
+    def test_destroy_base_model(self):
         """Test destroy command"""
         with patch('sys.stdout', new=StringIO()) as file:
             self.console.onecmd("create BaseModel")
             model_id = file.getvalue().strip()
             with patch('sys.stdout', new=StringIO()) as file:
-                self.console.onecmd("destroy {}".format(model_id))
+                self.console.onecmd("destroy BaseModel {}".format(model_id))
+                output = file.getvalue().strip()
+                self.assertNotIn(model_id, output)
+
+    def test_destroy_user(self):
+        """Test destroy command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create User")
+            model_id = file.getvalue().strip()
+            with patch('sys.stdout', new=StringIO()) as file:
+                self.console.onecmd("destroy User {}".format(model_id))
+                output = file.getvalue().strip()
+                self.assertNotIn(model_id, output)
+
+    def test_destroy_place(self):
+        """Test destroy command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create Place")
+            model_id = file.getvalue().strip()
+            with patch('sys.stdout', new=StringIO()) as file:
+                self.console.onecmd("destroy Place {}".format(model_id))
+                output = file.getvalue().strip()
+                self.assertNotIn(model_id, output)
+
+    def test_destroy_city(self):
+        """Test destroy command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create City")
+            model_id = file.getvalue().strip()
+            with patch('sys.stdout', new=StringIO()) as file:
+                self.console.onecmd("destroy City {}".format(model_id))
+                output = file.getvalue().strip()
+                self.assertNotIn(model_id, output)
+
+    def test_destroy_amenity(self):
+        """Test destroy command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create Amenity")
+            model_id = file.getvalue().strip()
+            with patch('sys.stdout', new=StringIO()) as file:
+                self.console.onecmd("destroy Amenity {}".format(model_id))
+                output = file.getvalue().strip()
+                self.assertNotIn(model_id, output)
+
+    def test_destroy_state(self):
+        """Test destroy command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create State")
+            model_id = file.getvalue().strip()
+            with patch('sys.stdout', new=StringIO()) as file:
+                self.console.onecmd("destroy State {}".format(model_id))
+                output = file.getvalue().strip()
+                self.assertNotIn(model_id, output)
+
+    def test_destroy_review(self):
+        """Test destroy command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create Review")
+            model_id = file.getvalue().strip()
+            with patch('sys.stdout', new=StringIO()) as file:
+                self.console.onecmd("destroy Review {}".format(model_id))
                 output = file.getvalue().strip()
                 self.assertNotIn(model_id, output)
 
