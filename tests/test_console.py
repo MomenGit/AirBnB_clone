@@ -226,13 +226,73 @@ class TestConsole(unittest.TestCase):
                 output = file.getvalue().strip()
                 self.assertNotIn(model_id, output)
 
-    def test_all(self):
+    def test_all_base_model(self):
         """Test all command"""
         with patch('sys.stdout', new=StringIO()) as file:
             self.console.onecmd("create BaseModel")
             model_id = file.getvalue().strip()
             with patch('sys.stdout', new=StringIO())as file:
                 self.console.onecmd("all BaseModel")
+                output = file.getvalue().strip()
+                self.assertIn(model_id, output)
+
+    def test_all_user(self):
+        """Test all command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create User")
+            model_id = file.getvalue().strip()
+            with patch('sys.stdout', new=StringIO())as file:
+                self.console.onecmd("all User")
+                output = file.getvalue().strip()
+                self.assertIn(model_id, output)
+
+    def test_all_place(self):
+        """Test all command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create Place")
+            model_id = file.getvalue().strip()
+            with patch('sys.stdout', new=StringIO())as file:
+                self.console.onecmd("all Place")
+                output = file.getvalue().strip()
+                self.assertIn(model_id, output)
+
+    def test_all_city(self):
+        """Test all command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create City")
+            model_id = file.getvalue().strip()
+            with patch('sys.stdout', new=StringIO())as file:
+                self.console.onecmd("all City")
+                output = file.getvalue().strip()
+                self.assertIn(model_id, output)
+
+    def test_all_amenity(self):
+        """Test all command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create Amenity")
+            model_id = file.getvalue().strip()
+            with patch('sys.stdout', new=StringIO())as file:
+                self.console.onecmd("all Amenity")
+                output = file.getvalue().strip()
+                self.assertIn(model_id, output)
+
+    def test_all_state(self):
+        """Test all command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create State")
+            model_id = file.getvalue().strip()
+            with patch('sys.stdout', new=StringIO())as file:
+                self.console.onecmd("all State")
+                output = file.getvalue().strip()
+                self.assertIn(model_id, output)
+
+    def test_all_review(self):
+        """Test all command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create Review")
+            model_id = file.getvalue().strip()
+            with patch('sys.stdout', new=StringIO())as file:
+                self.console.onecmd("all Review")
                 output = file.getvalue().strip()
                 self.assertIn(model_id, output)
 
