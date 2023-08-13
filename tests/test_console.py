@@ -30,10 +30,58 @@ class TestConsole(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as file:
             self.assertTrue(self.console.onecmd("EOF"))
 
-    def test_create(self):
+    def test_create_base_model(self):
         """Test create command"""
         with patch('sys.stdout', new=StringIO()) as file:
             self.console.onecmd("create BaseModel")
+            output = file.getvalue()
+            self.assertRegex(
+                output, r'\b\w+[-?\w+]*\b')
+
+    def test_create_user(self):
+        """Test create command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create User")
+            output = file.getvalue()
+            self.assertRegex(
+                output, r'\b\w+[-?\w+]*\b')
+
+    def test_create_city(self):
+        """Test create command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create City")
+            output = file.getvalue()
+            self.assertRegex(
+                output, r'\b\w+[-?\w+]*\b')
+
+    def test_create_place(self):
+        """Test create command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create Place")
+            output = file.getvalue()
+            self.assertRegex(
+                output, r'\b\w+[-?\w+]*\b')
+
+    def test_create_amenity(self):
+        """Test create command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create Amenity")
+            output = file.getvalue()
+            self.assertRegex(
+                output, r'\b\w+[-?\w+]*\b')
+
+    def test_create_state(self):
+        """Test create command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create State")
+            output = file.getvalue()
+            self.assertRegex(
+                output, r'\b\w+[-?\w+]*\b')
+
+    def test_create_review(self):
+        """Test create command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create Review")
             output = file.getvalue()
             self.assertRegex(
                 output, r'\b\w+[-?\w+]*\b')
