@@ -348,6 +348,19 @@ class TestConsole(unittest.TestCase):
                     output = file.getvalue().strip()
                     self.assertIn('name', output)
 
+    def test_update_amenity(self):
+        """Test update command"""
+        with patch('sys.stdout', new=StringIO()) as file:
+            self.console.onecmd("create Amenity")
+            model_id = file.getvalue()
+            with patch('sys.stdout', new=StringIO) as file:
+                self.console.onecmd(
+                    "update Amenity {} name 'Betty'".format(model_id))
+                with patch('sys.stdout', new=StringIO()) as file:
+                    self.console.onecmd("show Amenity {}".format(model_id))
+                    output = file.getvalue().strip()
+                    self.assertIn('name', output)
+
     def test_count(self):
         """Test count command"""
         with patch('sys.stdout', new=StringIO()) as file:
