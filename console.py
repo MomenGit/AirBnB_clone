@@ -1,11 +1,13 @@
 #!/usr/bin/python3
-"""Module that contains AirBnB command interpreter"""
 import cmd
 import models
+"""Module that contains AirBnB command interpreter"""
 
 
 class HBNBCommand(cmd.Cmd):
-    """Command interpreter to manage AirBnB objects using CRUD operations"""
+    """Command interpreter to manage AirBnB objects
+    using CRUD operations
+    """
 
     prompt = '(hbnb) '
 
@@ -36,13 +38,13 @@ class HBNBCommand(cmd.Cmd):
             super().cmdloop(intro)
 
     def do_quit(self, arg):
-        """Quit command to exit the program"""
-
+        """Quit command to exit the program
+        """
         return True
 
     def do_EOF(self, arg):
-        """EOF command to exit the program"""
-
+        """EOF command to exit the program
+        """
         print()
         return True
 
@@ -55,13 +57,10 @@ class HBNBCommand(cmd.Cmd):
                                  models.dispatch_dict().values()):
             print("** class doesn't exist **")
         else:
-            model = models.dispatch_dict()[obj_type]()
-            model.save()
-            print(model.id)
+            models.dispatch_dict()[obj_type]().save()
 
     def do_show(self, arg):
-        """
-        Prints the string representation of an instance
+        """Prints the string representation of an instance
         based on the class name and id
         """
 
@@ -159,8 +158,9 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_count(self, arg):
-        """Retrieve the number of instances of a class"""
-
+        """
+        Retrieve the number of instances of a class
+        """
         obj_count = 0
         for obj in models.storage.all().values():
             if (arg == obj.__class__.__name__):
