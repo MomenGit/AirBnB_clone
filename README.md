@@ -10,20 +10,21 @@ The first step in this project is to develop a command interpreter. This command
 
 The objectives of this step are as follows:
 
-Implement a parent class called BaseModel to handle the initialization, serialization, and deserialization of all future instances.
-Establish a simple flow of serialization/deserialization: Instance <-> Dictionary <-> JSON string <-> File.
-Create all the necessary classes for AirBnB (e.g., User, State, City, Place) as subclasses of the BaseModel.
-Develop the first abstracted storage engine for the project, which is the File storage.
-Create comprehensive unit tests to validate all classes and the storage engine.
-Command Interpreter Overview
+- Implement a parent class called BaseModel to handle the initialization, serialization, and deserialization of all future instances.
+- Establish a simple flow of serialization/deserialization: Instance <-> Dictionary <-> JSON string <-> File.
+- Create all the necessary classes for AirBnB (e.g., User, State, City, Place) as subclasses of the BaseModel.
+- Develop the first abstracted storage engine for the project, which is the File storage.
+- Create comprehensive unit tests to validate all classes and the storage engine.
+
+#### Command Interpreter Overview
+
 The command interpreter serves as an interactive shell, similar to the Shell in Unix, allowing you to manage the objects of the AirBnB project. Some of the supported operations include:
 
-Creating a new object (e.g., User, Place).
-Retrieving objects from files or databases.
-Performing operations on objects (e.g., counting, computing stats).
-Updating object attributes.
-Deleting objects.
-Resources
+- Creating a new object (e.g., User, Place).
+- Retrieving objects from files or databases.
+- Performing operations on objects (e.g., counting, computing stats).
+- Updating object attributes.
+- Deleting objects.
 
 ### Learning resources
 
