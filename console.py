@@ -145,6 +145,7 @@ class HBNBCommand(cmd.Cmd):
             obj_id = args[1]
             if (class_name not in models.dispatch_dict().keys()):
                 print("** class doesn't exist **")
+                return
             obj = models.storage.all().get("{}.{}"
                                            .format(class_name, obj_id))
             attr_name = args[2]
