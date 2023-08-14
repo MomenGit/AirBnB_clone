@@ -9,6 +9,13 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = '(hbnb) '
 
+    def default(self, line: str) -> None:
+        new_line = self.precmd(line)
+        if new_line:
+            self.onecmd(new_line)
+        else:
+            super().default(line)
+
     def precmd(self, line: str) -> str:
         import re
         pattern = r"(\w+)\.(\w+)\((.*)\)"
